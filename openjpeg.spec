@@ -21,6 +21,7 @@ Patch0: openjpeg-1.1.1-inst.patch
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 %{common_description}
