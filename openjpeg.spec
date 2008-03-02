@@ -1,5 +1,5 @@
 %define name openjpeg
-%define version 1.1.1
+%define version 1.3
 %define oname OpenJPEG
 %define oversion %(echo %{version} | sed -e 's/\\./_/g')
 %define release %mkrel 1
@@ -16,8 +16,8 @@ Summary: An open-source JPEG 2000 codec
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}_v%{oversion}.tar.bz2
-Patch0: openjpeg-1.1.1-inst.patch
+Source0: %{name}_v%{oversion}.tar.gz
+Patch0: openjpeg-1.3-inst.patch
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
@@ -49,7 +49,7 @@ developing programs using the %{oname} library.
 %{common_description}
 
 %prep
-%setup -q -n %{oname}
+%setup -q -n %{oname}_v%{oversion}
 %patch0 -p1 -b .inst
 
 %build
@@ -58,9 +58,7 @@ developing programs using the %{oname} library.
 %install
 rm -rf %{buildroot}
 install -d %{buildroot}%{_libdir}
-%make install INSTALLDIR=%{buildroot}%{_libdir}
-install -d %{buildroot}%{_includedir}
-install -m 644 lib%{name}/%{name}.h %{buildroot}%{_includedir}
+%makeinstall_std
 
 %clean
 rm -rf %{buildroot}
