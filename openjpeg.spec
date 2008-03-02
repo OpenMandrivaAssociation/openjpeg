@@ -57,8 +57,7 @@ developing programs using the %{oname} library.
 
 %install
 rm -rf %{buildroot}
-install -d %{buildroot}%{_libdir}
-%makeinstall_std
+%makeinstall_std INSTALL_LIBDIR=%{_libdir}
 
 %clean
 rm -rf %{buildroot}
