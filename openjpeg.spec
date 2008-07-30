@@ -2,7 +2,7 @@
 %define version 1.3
 %define oname OpenJPEG
 %define oversion %(echo %{version} | sed -e 's/\\./_/g')
-%define release %mkrel 1
+%define release %mkrel 3
 
 %define lib_major 1
 %define lib_name %mklibname %{name} %{lib_major}
