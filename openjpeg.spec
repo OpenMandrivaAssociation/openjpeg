@@ -12,7 +12,7 @@ Photographic Experts Group (JPEG).
 
 Name: openjpeg
 Version: 1.3
-Release: %mkrel 4
+Release: %mkrel 5
 Summary: An open-source JPEG 2000 codec 
 Source0: %{name}_v%{oversion}.tar.gz
 Patch0: openjpeg-1.3-inst.patch
