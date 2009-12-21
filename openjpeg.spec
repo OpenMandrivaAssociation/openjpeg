@@ -12,10 +12,10 @@ Photographic Experts Group (JPEG).
 
 Name: openjpeg
 Version: 1.3
-Release: %mkrel 5
+Release: %mkrel 6
 Summary: An open-source JPEG 2000 codec 
 Source0: %{name}_v%{oversion}.tar.gz
-Patch0: openjpeg-1.3-inst.patch
+Patch0: openjpeg-1.3-Makefile.patch
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
@@ -65,7 +65,7 @@ developing programs using the %{oname} library.
 %patch0 -p1 -b .inst
 
 %build
-%setup_compile_flags %make
+%make CFLAGS="%{optflags} -fPIC" LDFLAGS="%{ldflags}"
 
 %install
 rm -rf %buildroot
