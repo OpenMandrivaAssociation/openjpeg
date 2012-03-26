@@ -19,6 +19,7 @@ Patch0: openjpeg-1.3-Makefile.patch
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
+BuildRequires: cmake
 
 %description
 %{common_description}
