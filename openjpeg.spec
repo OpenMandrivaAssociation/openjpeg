@@ -1,7 +1,7 @@
 %define oname OpenJPEG
 %define oversion %(echo %{version} | sed -e 's/\\./_/g')
 
-%define lib_major 2
+%define lib_major 1
 %define lib_name %mklibname %{name} %{lib_major}
 %define lib_dev %mklibname %{name} -d
 
@@ -11,15 +11,14 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg
-Version: 1.3
-Release: %mkrel 8
+Version: 1.5.0
+Release: 1
 Summary: An open-source JPEG 2000 codec 
-Source0: %{name}_v%{oversion}.tar.gz
+Source0: http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0: openjpeg-1.3-Makefile.patch
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 %{common_description}
@@ -35,11 +34,20 @@ linked with the %{oname} library.
 %{common_description}
 
 %files -n %{lib_name}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
-#---------------------------------------------
 
+
+
+
+#-----------------------------
+%files
+%{_bindir}/*
+%{_mandir}/man1/*
+%{_mandir}/man3/*
+%doc %{_datadir}/doc/%{name}-1.5/
+
+#---------------------------------------------
 %package -n %{lib_dev}
 Summary: Development tools for programs using the %{oname} library
 Group: Development/C
@@ -53,25 +61,20 @@ developing programs using the %{oname} library.
 %{common_description}
 
 %files -n %{lib_dev}
-%defattr(-,root,root)
-%{_includedir}/%{name}.h
-%{_libdir}/*.a
+%{_includedir}/%{name}-1.5/%{name}.h
 %{_libdir}/*.so
+%{_datadir}/%{name}-1.5/*.cmake
+%{_datadir}/pkgconfig/libopenjpeg1.pc
 
 #---------------------------------------------
 
 %prep
-%setup -q -n %{oname}_v%{oversion}
-%patch0 -p1 -b .inst
+%setup -q
 
 %build
-%make CFLAGS="%{optflags} -fPIC" LDFLAGS="%{ldflags}"
+%cmake -DOPENJPEG_INSTALL_LIB_DIR=%{_lib}
+%make
 
 %install
-rm -rf %buildroot
-%makeinstall_std INSTALL_LIBDIR=%{_libdir}
-
-%clean
-rm -rf %buildroot
-
-
+cd build/
+%makeinstall_std
