@@ -12,10 +12,11 @@ Photographic Experts Group (JPEG).
 
 Name: openjpeg
 Version: 1.5.0
-Release: 1
+Release: 2
 Summary: An open-source JPEG 2000 codec 
 Source0: http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0: openjpeg-1.3-Makefile.patch
+Patch0: openjpeg-1.5.0-CVE-2009-5030.diff
+Patch1: openjpeg-1.5.0-CVE-2012-3358.diff
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
@@ -71,6 +72,8 @@ developing programs using the %{oname} library.
 
 %prep
 %setup -q
+%patch0 -p1 -b .CVE-2009-5030
+%patch1 -p1 -b .CVE-2012-3358
 
 %build
 %cmake -DOPENJPEG_INSTALL_LIB_DIR=%{_lib}
