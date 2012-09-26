@@ -32,7 +32,7 @@ linked with the %{oname} library.
 %{common_description}
 
 %files -n %{lib_name}
-%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.%{lib_major}
 %{_libdir}/*.so.%{version}
 
 
