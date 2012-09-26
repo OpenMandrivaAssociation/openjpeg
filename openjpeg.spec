@@ -1,6 +1,4 @@
 %define oname OpenJPEG
-%define oversion %(echo %{version} | sed -e 's/\\./_/g')
-
 %define lib_major 1
 %define lib_name %mklibname %{name} %{lib_major}
 %define lib_dev %mklibname %{name} -d
@@ -11,12 +9,10 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg
-Version: 1.5.0
-Release: 2
+Version: 1.5.1
+Release: 1
 Summary: An open-source JPEG 2000 codec 
 Source0: http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0: openjpeg-1.5.0-CVE-2009-5030.diff
-Patch1: openjpeg-1.5.0-CVE-2012-3358.diff
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
@@ -65,15 +61,13 @@ developing programs using the %{oname} library.
 %files -n %{lib_dev}
 %{_includedir}/%{name}-1.5/%{name}.h
 %{_libdir}/*.so
-%{_datadir}/%{name}-1.5/*.cmake
-%{_datadir}/pkgconfig/libopenjpeg1.pc
+%{_libdir}/%{name}-1.5/*.cmake
+%{_libdir}/pkgconfig/libopenjpeg1.pc
 
 #---------------------------------------------
 
 %prep
 %setup -q
-%patch0 -p1 -b .CVE-2009-5030
-%patch1 -p1 -b .CVE-2012-3358
 
 %build
 %cmake -DOPENJPEG_INSTALL_LIB_DIR=%{_lib}
