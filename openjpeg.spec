@@ -1,5 +1,5 @@
 %define oname OpenJPEG
-%define lib_major 1
+%define lib_major 5
 %define lib_name %mklibname %{name} %{lib_major}
 %define lib_dev %mklibname %{name} -d
 
@@ -32,7 +32,8 @@ linked with the %{oname} library.
 %{common_description}
 
 %files -n %{lib_name}
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.%{version}
 
 
 
