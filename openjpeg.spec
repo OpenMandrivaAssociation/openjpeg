@@ -72,7 +72,7 @@ developing programs using the %{oname} library.
 %{_libdir}/*.so.%{version}
 
 %files -n %{lib_dev}
-%{_includedir}/%{name}-1.5/%{name}.h
+%{_includedir}/%{name}.h
 %{_libdir}/*.so
 %{_libdir}/%{name}-1.5/*.cmake
 %{_libdir}/pkgconfig/libopenjpeg1.pc
