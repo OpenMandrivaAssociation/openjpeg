@@ -1,7 +1,7 @@
-%define oname OpenJPEG
-%define lib_major 5
-%define lib_name %mklibname %{name} %{lib_major}
-%define lib_dev %mklibname %{name} -d
+%define	oname	OpenJPEG
+%define	major	5
+%define	libname	%mklibname %{name} %{major}
+%define	libdev	%mklibname %{name} -d
 
 %define common_description The OpenJPEG library is an open-source JPEG 2000 codec written in C\
 language. It has been developed in order to promote the use of JPEG\
@@ -11,7 +11,7 @@ Photographic Experts Group (JPEG).
 Summary:	An open-source JPEG 2000 codec 
 Name:		openjpeg
 Version:	1.5.1
-Release:	4
+Release:	5
 License:	BSD
 Group:		System/Libraries
 Url:		http://www.openjpeg.org/
@@ -24,24 +24,24 @@ BuildRequires:	lcms2-devel
 %description
 %{common_description}
 
-%package -n %{lib_name}
+%package -n	%{libname}
 Summary:	%{oname} library
 Group:		System/Libraries
 
-%description -n	%{lib_name}
+%description -n	%{libname}
 This package contains the library needed to run programs dynamically
 linked with the %{oname} library.
 
 %{common_description}
 
-%package -n %{lib_dev}
+%package -n	%{libdev}
 Summary:	Development tools for programs using the %{oname} library
 Group:		Development/C
-Requires:	%{lib_name} = %{version}
+Requires:	%{libname} = %{version}
 Requires:	%{name} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{lib_dev}
+%description -n	%{libdev}
 This package contains the header files and libraries needed for
 developing programs using the %{oname} library.
 
@@ -67,12 +67,12 @@ developing programs using the %{oname} library.
 %{_mandir}/man3/*
 %doc %{_datadir}/doc/%{name}-1.5/
 
-%files -n %{lib_name}
-%{_libdir}/*.so.%{lib_major}
-%{_libdir}/*.so.%{version}
+%files -n %{libname}
+%{_libdir}/libopenjpeg.so.%{major}
+%{_libdir}/libopenjpeg.so.%{version}
 
-%files -n %{lib_dev}
+%files -n %{libdev}
 %{_includedir}/%{name}.h
-%{_libdir}/*.so
+%{_libdir}/libopenjpeg.so
 %{_libdir}/%{name}-1.5/*.cmake
 %{_libdir}/pkgconfig/libopenjpeg1.pc
