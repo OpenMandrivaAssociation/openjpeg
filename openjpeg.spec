@@ -27,6 +27,7 @@ BuildRequires:	lcms2-devel
 %package -n	%{libname}
 Summary:	%{oname} library
 Group:		System/Libraries
+%rename		%{_lib}%{name}1
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
@@ -51,7 +52,7 @@ developing programs using the %{oname} library.
 %setup -q
 
 %build
-%cmake -DOPENJPEG_INSTALL_BIN_DIR:PATH=%{_bindir} \
+%cmake	-DOPENJPEG_INSTALL_BIN_DIR:PATH=%{_bindir} \
 	-DOPENJPEG_INSTALL_DATA_DIR:PATH=%{_datadir} \
 	-DOPENJPEG_INSTALL_INCLUDE_DIR:PATH=%{_includedir} \
 	-DOPENJPEG_INSTALL_LIB_DIR:PATH=%{_libdir}
