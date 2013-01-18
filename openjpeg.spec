@@ -10,23 +10,23 @@ language. It has been developed in order to promote the use of JPEG\
 2000, the new still-image compression standard from the Joint\
 Photographic Experts Group (JPEG).
 
-Name: openjpeg
-Version: 1.5.1
-Release: 3
-Summary: An open-source JPEG 2000 codec 
-Source0: http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
-Patch0: openjpeg-1.3-Makefile.patch
-License: BSD
-Group: System/Libraries
-Url: http://www.openjpeg.org/
-BuildRequires: cmake
+Name:		openjpeg
+Version:	1.5.1
+Release:	1
+Summary:	An open-source JPEG 2000 codec 
+Source0:	http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
+Patch0:		openjpeg-1.3-Makefile.patch
+License:	BSD
+Group:		System/Libraries
+Url:		http://www.openjpeg.org/
+BuildRequires:	cmake
 
 %description
 %{common_description}
 
 %package -n %{lib_name}
-Summary: %{oname} library
-Group: System/Libraries
+Summary:	%{oname} library
+Group:		System/Libraries
 
 %description -n	%{lib_name}
 This package contains the library needed to run programs dynamically
@@ -51,11 +51,11 @@ linked with the %{oname} library.
 
 #---------------------------------------------
 %package -n %{lib_dev}
-Summary: Development tools for programs using the %{oname} library
-Group: Development/C
-Requires: %{lib_name} = %{version}
-Requires: %{name} = %{version}
-Provides: %{name}-devel = %{version}-%{release}
+Summary:	Development tools for programs using the %{oname} library
+Group:		Development/C
+Requires:	%{lib_name} = %{version}
+Requires:	%{name} = %{version}
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{lib_dev}
 This package contains the header files and libraries needed for
