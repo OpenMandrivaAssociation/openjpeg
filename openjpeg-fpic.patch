@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cb389df..aacd407 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -208,6 +208,7 @@ CHECK_INCLUDE_FILE("sys/stat.h"     HAVE_SYS_STAT_H)
+ CHECK_INCLUDE_FILE("sys/types.h"    HAVE_SYS_TYPES_H)
+ CHECK_INCLUDE_FILE("unistd.h"       HAVE_UNISTD_H)
+ 
++ADD_DEFINITIONS(-fPIC)
+ 
+ #-----------------------------------------------------------------------------
+ # Build Library

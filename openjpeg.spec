@@ -17,6 +17,7 @@ Group:		System/Libraries
 Url:		http://www.openjpeg.org/
 Source0:	http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		openjpeg-1.5.1-fix-cmake-generated-pkgconfig.patch
+Patch1:		openjpeg-fpic.patch
 BuildRequires:	cmake
 BuildRequires:	png-devel
 BuildRequires:	tiff-devel
@@ -52,6 +53,7 @@ developing programs using the %{oname} library.
 %prep
 %setup -q
 %patch0 -p1 -b .pkgconfig~
+%patch1 -p1 -b .fpic
 
 %build
 %cmake	-DOPENJPEG_INSTALL_BIN_DIR:PATH=%{_bindir} \
