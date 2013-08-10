@@ -1,12 +1,7 @@
 %define	oname	OpenJPEG
 %define	major	5
 %define	libname	%mklibname %{name} %{major}
-%define	libdev	%mklibname %{name} -d
-
-%define common_description The OpenJPEG library is an open-source JPEG 2000 codec written in C\
-language. It has been developed in order to promote the use of JPEG\
-2000, the new still-image compression standard from the Joint\
-Photographic Experts Group (JPEG).
+%define	devname	%mklibname %{name} -d
 
 Summary:	An open-source JPEG 2000 codec 
 Name:		openjpeg
@@ -19,12 +14,16 @@ Source0:	http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		openjpeg-1.5.1-fix-cmake-generated-pkgconfig.patch
 Patch1:		openjpeg-fpic.patch
 BuildRequires:	cmake
-BuildRequires:	png-devel
 BuildRequires:	tiff-devel
-BuildRequires:	lcms2-devel
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(lcms2)
 
 %description
-%{common_description}
+The OpenJPEG library is an open-source JPEG 2000 codec written in C
+language. It has been developed in order to promote the use of JPEG
+2000, the new still-image compression standard from the Joint
+Photographic Experts Group (JPEG).
+
 
 %package -n	%{libname}
 Summary:	%{oname} library
@@ -35,25 +34,20 @@ Group:		System/Libraries
 This package contains the library needed to run programs dynamically
 linked with the %{oname} library.
 
-%{common_description}
-
-%package -n	%{libdev}
+%package -n	%{devname}
 Summary:	Development tools for programs using the %{oname} library
 Group:		Development/C
-Requires:	%{libname} = %{version}
-Requires:	%{name} = %{version}
+Requires:	%{libname} = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{libdev}
+%description -n	%{devname}
 This package contains the header files and libraries needed for
 developing programs using the %{oname} library.
 
-%{common_description}
-
 %prep
 %setup -q
-%patch0 -p1 -b .pkgconfig~
-%patch1 -p1 -b .fpic
+%apply_patches
 
 %build
 %cmake	-DOPENJPEG_INSTALL_BIN_DIR:PATH=%{_bindir} \
@@ -65,19 +59,21 @@ developing programs using the %{oname} library.
 
 %install
 %makeinstall_std -C build
+rm -fr %{buildroot}%{_docdir}/%{name}-1.5
 
 %files
 %{_bindir}/*
 %{_mandir}/man1/*
-%{_mandir}/man3/*
-%doc %{_datadir}/doc/%{name}-1.5/
+%doc doc/*
 
 %files -n %{libname}
 %{_libdir}/libopenjpeg.so.%{major}
 %{_libdir}/libopenjpeg.so.%{version}
 
-%files -n %{libdev}
+%files -n %{devname}
 %{_includedir}/%{name}.h
 %{_libdir}/libopenjpeg.so
 %{_libdir}/%{name}-1.5/*.cmake
 %{_libdir}/pkgconfig/libopenjpeg1.pc
+%{_mandir}/man3/*
+
