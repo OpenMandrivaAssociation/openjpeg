@@ -11,7 +11,7 @@ Photographic Experts Group (JPEG).
 Summary:	An open-source JPEG 2000 codec 
 Name:		openjpeg
 Version:	1.5.1
-Release:	7
+Release:	8
 License:	BSD
 Group:		System/Libraries
 Url:		http://www.openjpeg.org/
