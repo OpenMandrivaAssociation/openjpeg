@@ -6,7 +6,7 @@
 Summary:	An open-source JPEG 2000 codec 
 Name:		openjpeg
 Version:	1.5.1
-Release:	13
+Release:	14
 License:	BSD
 Group:		System/Libraries
 Url:		http://www.openjpeg.org/
