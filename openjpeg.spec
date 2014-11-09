@@ -1,12 +1,12 @@
-%define	oname	OpenJPEG
-%define	major	5
-%define	libname	%mklibname %{name} %{major}
-%define	devname	%mklibname %{name} -d
+%define oname OpenJPEG
+%define major 5
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 
 Summary:	An open-source JPEG 2000 codec 
 Name:		openjpeg
-Version:	1.5.1
-Release:	17
+Version:	1.5.2
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		http://www.openjpeg.org/
@@ -24,11 +24,10 @@ language. It has been developed in order to promote the use of JPEG
 2000, the new still-image compression standard from the Joint
 Photographic Experts Group (JPEG).
 
-
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	%{oname} library
 Group:		System/Libraries
-%rename		%{_lib}%{name}1
+%rename		%{_lib}%{name}1 < 1.5.2
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
@@ -76,4 +75,3 @@ rm -fr %{buildroot}%{_docdir}/%{name}-1.5
 %{_libdir}/%{name}-1.5/*.cmake
 %{_libdir}/pkgconfig/libopenjpeg1.pc
 %{_mandir}/man3/*
-

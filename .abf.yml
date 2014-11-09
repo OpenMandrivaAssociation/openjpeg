@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   openjpeg-1.5.1.tar.gz: 1b0b74d1af4c297fd82806a9325bb544caf9bb8b
+sources:
+  openjpeg-1.5.2.tar.gz: 496e99ff1d37b73bbce6a066dd9bd3576ebca0a2
