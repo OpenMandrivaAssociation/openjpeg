@@ -27,7 +27,7 @@ Photographic Experts Group (JPEG).
 %package -n %{libname}
 Summary:	%{oname} library
 Group:		System/Libraries
-%rename		%{_lib}%{name}1 < 1.5.2
+%rename		%{_lib}%{name}1
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
