@@ -46,7 +46,7 @@ developing programs using the %{oname} library.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake	-DOPENJPEG_INSTALL_BIN_DIR:PATH=%{_bindir} \
