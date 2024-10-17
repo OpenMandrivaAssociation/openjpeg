@@ -9,7 +9,7 @@ Version:	1.5.2
 Release:	8
 License:	BSD
 Group:		System/Libraries
-Url:		http://www.openjpeg.org/
+Url:		https://www.openjpeg.org/
 Source0:	http://openjpeg.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		openjpeg-1.5.1-fix-cmake-generated-pkgconfig.patch
 Patch1:		openjpeg-fpic.patch
